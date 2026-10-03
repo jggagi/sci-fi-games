@@ -27,3 +27,7 @@
 按 [SCRIPT.md](SCRIPT.md) → [DESIGN.md](DESIGN.md) → [CODEX_TASK.md](CODEX_TASK.md) 阅读。完整稿定位为约 60–90 分钟短篇的初稿；首个 demo 采用 25–35 分钟浓缩闭环，均待试玩验证。
 
 第一版只需要五组可复用的 2D 场景、对白、音景、热点、照片与一次镜面交互。不要先做自由 3D 步行、真实相机接入或全套生存模拟。
+
+## 独立试玩实现
+
+`demo/` 已提供 Vite + TypeScript 浏览器实现，包含 T01–T08 和自主结束的可玩尾声。安装、开发、生产预览与测试命令见 [demo/README.md](demo/README.md)，逐项验证和局限见 [PLAYTEST.md](PLAYTEST.md)。以上体验长度仍是目标，不能视为实测结论。
