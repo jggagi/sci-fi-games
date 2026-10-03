@@ -69,3 +69,9 @@ E2E 自动构建生产版本并在 5172 启动 preview，请先停止占用该�
 仅 Vite、TypeScript、tsx、Playwright 为开发依赖。无通用游戏引擎。画面、音色和新增对白为本 demo 编排，不包含原著全文、影视或商业游戏素材。不新增整体内容许可证；作品改编授权／未来发行仍按仓库原文另行处理。
 
 真实验证与局限见上级 `PLAYTEST.md`。没有进行真人用户研究，不宣称达到原文 25–35 分钟目标时长。
+
+## ChatGPT Sites 私有试玩
+
+[打开《再往前十秒》](https://ten-seconds-earlier-jggagi.jggagi.chatgpt.site)。按照后续请求发布到 ChatGPT Sites，仅所有者访问，未公共发布。完整游戏与本地版本相同，无游戏账号或云后端。
+
+`.openai/hosting.json` 保存此 Site 的固定标识与静态目录 `dist`。Sites 版本来自独立的 Site 源码仓库，本仓库仍在故事隔离分支中审查，不推送 GitHub main、不自动合并。浏览器存档仍只留在本机；不同网址的本地存储彼此隔离，不会自动迁移 localhost 的进度。
