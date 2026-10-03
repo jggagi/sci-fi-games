@@ -31,3 +31,5 @@
 ## 独立试玩实现
 
 `demo/` 已提供 Vite + TypeScript 浏览器实现，包含 T01–T08 和自主结束的可玩尾声。安装、开发、生产预览与测试命令见 [demo/README.md](demo/README.md)，逐项验证和局限见 [PLAYTEST.md](PLAYTEST.md)。以上体验长度仍是目标，不能视为实测结论。
+
+已按后续请求发布为私有 [ChatGPT Site 试玩版](https://tomorrow-again-demo-jggagi.jggagi.chatgpt.site)。网站与 localhost 使用不同浏览器来源，本机版的存档不会自动转移到站点。站点身份与纯静态发布目录记录在 `demo/.openai/hosting.json`，没有新增后端或云 AI。
