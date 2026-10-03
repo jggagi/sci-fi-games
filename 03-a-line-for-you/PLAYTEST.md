@@ -83,3 +83,11 @@ A 的实际组合：`rain_count / word_wait / chair_window`，保留「夜风」
 ## 修改与交付边界
 
 新增实现、内容、原创素材、配置、lockfile、测试和截图位于 `03-a-line-for-you/demo/`；新增本记录，并在本目录 README 添加试玩入口。未修改根目录、其他四篇、共享引擎或工作流，未提交 node_modules、dist、测试临时产物或凭据。没有推送 main、强推、自动合并或公共部署。
+
+## 后续交付：私人 ChatGPT Site
+
+用户随后要求使用 ChatGPT Site。2026-10-03 已将同一完整游戏发布至 [a-line-for-you.jggagi.chatgpt.site](https://a-line-for-you.jggagi.chatgpt.site)，原生发布结果为 `succeeded`，仅所有者可访问，未改变为公共站点。
+
+发布工作副本从已验收代码创建，重新构建通过；原生产 JS 与发布 JS 的 SHA-256 完全相等。静态资源使用相对路径，仍没有在线模型、API 或第三方内容依赖。Sites 来源提交为 `d33b3a30b906e6468390346423a90e7ae9eb3fb2`，上传包只包含 hosting 配置和生产 dist。当前环境没有技能所述 bundled workflow 脚本，因此执行等价的本地构建、来源提交／推送／远端 SHA 核对、打包校验，再通过原生 Sites 工具私人发布；凭据仅通过隐藏 stdin 与进程环境传递，没有写入文件或仓库。
+
+复用已通过的三项生产浏览器测试；没有把发布成功冒称为额外的远端浏览器回放。站点入口需要登录当前账户，新域名的 localStorage 与 localhost 分开。站点配置与发布说明仍仅加入本故事目录，原 GitHub PR 不自动合并。

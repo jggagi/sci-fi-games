@@ -2,6 +2,12 @@
 
 可完整游玩 P01–P08：你是 AI 小序，与编辑沈青整理周淮留下的六张纸页。移动接水盆、回答雨声、比较修订、试摆椅子、按编号拼接手稿，最后亲手决定一行与共同作者栏。确认之后仍能探索房间、翻看纸页。
 
+## ChatGPT Site 私人试玩
+
+[给你留一行 · a-line-for-you.jggagi.chatgpt.site](https://a-line-for-you.jggagi.chatgpt.site) 已发布为私人 Site，当前仅所有者可访问。私人入口需要当前账户，游戏内容和存档仍在浏览器本机运行。站点域名与 localhost 的存档互相独立，不会自动迁移进度。
+
+`.openai/hosting.json` 保存同一 Site 的项目标识和静态目录配置；后续更新应复用这个 Site。`.sites-runtime/` 为被忽略的发布工作副本，不提交凭据、构建产物或嵌套 checkout。GitHub 独立 PR 继续保留，未合并 main。
+
 ## 安装与运行
 
 需要 **Node.js 24+**、npm，以及现代浏览器。所有命令在本目录执行，不需要根目录依赖：
