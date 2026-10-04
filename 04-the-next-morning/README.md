@@ -20,4 +20,10 @@
 
 本篇有两条明确结局，首个 demo 均需有真实收束：继续面对第二天，或进入答案交换后的留存者视角。避免具体死亡过程与视觉美化。
 
+## 可运行 demo
+
+实现位于 [demo/](demo/)，完整包含 D01–D08 两条路线与可操作尾声。安装与运行：`cd 04-the-next-morning/demo && npm ci && npm run dev`，默认端口 5174。生产预览、单元测试与真实浏览器测试命令见 [demo/README.md](demo/README.md)，实际验证证据见 [PLAYTEST.md](PLAYTEST.md)。
+
+原创 SVG 实验室通过四个时期的设备、纸页、人物与晨光变化呈现。全部实验本地运行；没有在线服务或最终选择评分。目标游玩时长尚未经真人验证。
+
 阅读 [SCRIPT.md](SCRIPT.md)、[DESIGN.md](DESIGN.md)、[CODEX_TASK.md](CODEX_TASK.md)。首个 demo 目标30–40分钟，完整篇幅暂定90–120分钟，需试玩验证。内容提示：以生命为代价的虚构交换、人生选择与失去同伴。

@@ -1,0 +1,65 @@
+# 第二天早上 · 独立浏览器 demo
+
+一间会随年代改变的实验室，一台可以亲手试验的虚构脉冲盒。完整包含 D01–D07、撤回后的林予尾声 D08A，以及交换后切为程砚的尾声 D08B。全部科学结果与剧情在本机确定性运行，无后端、在线 AI、账号、CDN 或运行时网络请求。
+
+内容提示：以生命为代价的虚构交换、人生选择、失去同伴。这是基于既有小说设定的平行改编构想，不宣称官方授权。场景插画、对白改写、图标与轻声提示由本项目原创；没有加入第三方音乐、美术或原著全文。
+
+## ChatGPT Sites 试玩
+
+[第二天早上 · ChatGPT Sites](https://jggagi-next-morning.jggagi.chatgpt.site) 已发布为私人站点。运行内容与本地 demo 相同；存档仍仅留在访问该站点的浏览器内，不会上传或与 localhost 存档跨域同步。托管身份保存在 `.openai/hosting.json`，静态发布目录为 `dist`；后续更新应复用此 Site，不另建重复站点。
+
+## 安装、开发与生产预览
+
+需要 Node.js 20.19+、22.12+ 或更新受支持版本，以及 npm。命令从仓库根目录执行：
+
+```sh
+cd 04-the-next-morning/demo
+npm ci
+npm run dev
+```
+
+打开 `http://localhost:5174`。端口可覆盖，例如 `npm run dev -- --port 5184`。开发与预览均设置 strictPort；占用时明确报错，不悄悄换端口。
+
+```sh
+npm run build
+npm run preview
+```
+
+生产预览同样在 `http://localhost:5174`；覆盖示例：`npm run preview -- --port 5184`。构建产物在本目录的 `dist/`，不提交 Git。依赖安装后无需互联网；可以把 dist 的内容用任意本地静态 HTTP 服务器运行。使用相对资源路径，支持子路径。请用 HTTP 访问，浏览器对直接打开 file:// 的支持不作保证。
+
+## 测试
+
+```sh
+npm run typecheck
+npm test
+npm run test:e2e
+```
+
+`test:e2e` 会自行运行生产构建与 `127.0.0.1:5174` 预览，请先停止占用该端口的开发／预览服务。测试使用 Playwright 的真实 Chromium。配置优先选择 `PLAYWRIGHT_CHROMIUM_PATH` 指定的可执行文件，然后选择 `/usr/bin/chromium`；两者都没有时使用 Playwright 安装的浏览器：
+
+```sh
+npx playwright install chromium
+# 可选：使用已有的 Chromium
+PLAYWRIGHT_CHROMIUM_PATH=/absolute/path/to/chromium npm run test:e2e
+```
+
+Linux 缺浏览器系统库时，可在具备系统安装权限的环境运行 `npx playwright install --with-deps chromium`。本次验收使用已有 Chromium，无额外浏览器安装。受限执行沙箱需允许本地网络与浏览器 socket；本次默认沙箱曾拒绝 socket，授予执行网络权限后正常运行。
+
+单元测试与浏览器测试分开。前者覆盖 16 个端口／间隔组合、轮重置、假设反例、剧情状态和存档；后者从新游戏通过公开 UI 完成两个结局，包含纯键盘通关、实际刷新恢复、错误分类修正、确认幂等、静态脉冲和触控。验收明细、首次失败及修复见 [PLAYTEST.md](../PLAYTEST.md)。测试失败时生成的 trace、截图在忽略的 `test-results/`；交付截图在 [screenshots/](screenshots/)。
+
+## 操作与实验
+
+- 鼠标点击、触控点击；键盘 Tab / Shift+Tab 移动，Enter / Space 操作按钮与复选框，方向键调整原生下拉选项。顶部提供阅读设置与重开确认。
+- 静音、关闭打字、减弱动态、静态脉冲均可设置。默认静音、关闭打字、静态脉冲；系统减弱动态偏好会被读取。结果始终有数字与文字，不靠颜色或声音。
+- 一轮从重置开始，选择两个端口与间隔，分别发出第一、第二脉冲。间隔是虚构装置的离散单位，由装置执行；真实点击间隔没有意义，不是反应速度测试。输入后设置锁定，可放弃当前轮重置，完整旧记录保留。
+- D02 固定 1 单位，先留解释，再改变端口作对照；D03 开放 1–4 单位，比较长短间隔并利用真实反例修订。渐进提示不会在第一次实验前公开规则。
+- 唯一实验真源 `evaluateTrial()`：每轮首脉冲 1；次脉冲在间隔 <3 单位为 2，否则为 1；与端口无关。此规则是故事内玩具模型，不是现实科学结论，亦不是终极问题的答案。
+- 资料交接区分核验事实、猜想与未完成项。确认人生决定前可返回查看，两个决定均需单独确认；无实验分数、关系好感或隐藏结局判定。
+
+## 存档与文件结构
+
+自动存档只读写 `sci-fi-games:04-the-next-morning:v1`，包含脉冲阶段、实际记录、解释、交接、未确认／已确认的决定、尾声操作和阅读设置。刷新回到标题页，选择“继续”恢复。损坏时提供原因与显式恢复；重开必须确认，只覆盖本故事。浏览器拒绝存储或空间不足会明确提示，请保持页面打开。
+
+实验模型在 `src/experiment.ts`；剧情 reducer 与动作门槛在 `src/state.ts`；正文与稳定内容 ID 在 `src/content.ts`；存档校验在 `src/storage.ts`；原创 SVG 在 `src/scene.ts` 和 `public/dawn.svg`；DOM 与样式在 `src/main.ts`、`src/style.css`。没有正式界面的开发跳关。自由文字转义为纯文本显示；保存的实验输出重新经模型校验，尾声角色必须与已确认决定一致。
+
+当前完成技术验收，不代表真人试玩或情感效果已验证。仅实际验收 Chromium；未执行 Firefox、Safari、真实手机或屏幕阅读器走查。剧本文档的 30–40 分钟是目标，未进行真人计时，demo 有压缩的对白与可自行重复的实验。
